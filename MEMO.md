@@ -32,7 +32,7 @@
 
 「Use workflow from」で指定されたブランチ
 
-## 検証1
+## 検証2
 
 ```
 - name: "Checkout GitHub Action"
