@@ -17,5 +17,12 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: "Display Branch"
+        run: |
+          git branch
+        shell: bash
+
       - name: "Display Version"
-        run: cat ver.txt
+        run: |
+          cat ver.txt
+        shell: bash
