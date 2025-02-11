@@ -8,15 +8,29 @@
 ```
 の記述がどこを参照するか
 
-### mainブランチマージ時 > Action1
+### mainブランチマージ時 > Action1 (push trigger で起動)
 
-### mainブランチマージ時 > Action2
+`main`
 
-### productionブランチマージ時 > Action1
+### mainブランチマージ時 > Action2 (workflow_run trigger で起動)
 
-### productionブランチマージ時 > Action2
+`main`
 
-### 手動実行時
+### productionブランチマージ時 > Action1 (push trigger で起動)
+
+`production`
+
+### productionブランチマージ時 > Action2 (workflow_run trigger で起動)
+
+`main`
+
+### 手動実行時 > Action1
+
+「Use workflow from」で指定されたブランチ
+
+### 手動実行時 > Action2
+
+「Use workflow from」で指定されたブランチ
 
 ## 検証1
 
