@@ -3,6 +3,7 @@ name: Action1
 on:
   push:
     branches:
+      - main
       - production
   workflow_dispatch:
 
