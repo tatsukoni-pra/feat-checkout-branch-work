@@ -8,22 +8,44 @@
 ```
 の記述がどこを参照するか
 
-### mainブランチマージ時 > Action1
+### mainブランチマージ時 > Action1 (push trigger で起動)
 
-### mainブランチマージ時 > Action2
+`main`
 
-### productionブランチマージ時 > Action1
+### mainブランチマージ時 > Action2 (workflow_run trigger で起動)
 
-### productionブランチマージ時 > Action2
+`main`
 
-### 手動実行時
+### productionブランチマージ時 > Action1 (push trigger で起動)
 
-## 検証1
+`production`
+
+### productionブランチマージ時 > Action2 (workflow_run trigger で起動)
+
+`main`
+
+### 手動実行時 > Action1
+
+「Use workflow from」で指定されたブランチ
+
+### 手動実行時 > Action2
+
+「Use workflow from」で指定されたブランチ
+
+## 検証2
 
 ```
-- name: "Checkout GitHub Action"
+- name: "Checkout workflow_dispatch GitHub Action"
+  if: github.event_name == 'workflow_dispatch'
   uses: actions/checkout@v4
   with:
+    ref: ${{ github.event.workflow_run.head_branch }}
+    fetch-depth:
+- name: "Checkout workflow_run GitHub Action"
+  if: github.event_name == 'workflow_run'
+  uses: actions/checkout@v4
+  with:
+    ref: ${{ github.event.workflow_run.head_branch }}
     fetch-depth: 0
 ```
 の記述がどこを参照するか
