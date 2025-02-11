@@ -34,7 +34,7 @@ jobs:
       - name: "Display workflow_run head_branch"
         if: github.event_name == 'workflow_run'
         run: |
-          echo "Head Branch: ${{ github.event.workflow_run.head_branch }}"
+          echo "Json: ${{ github.event.workflow_run }}"
         shell: bash
 
       - name: "Display Branch"
