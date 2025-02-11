@@ -35,9 +35,17 @@
 ## 検証2
 
 ```
-- name: "Checkout GitHub Action"
+- name: "Checkout workflow_dispatch GitHub Action"
+  if: github.event_name == 'workflow_dispatch'
   uses: actions/checkout@v4
   with:
+    ref: ${{ github.event.workflow_run.head_branch }}
+    fetch-depth:
+- name: "Checkout workflow_run GitHub Action"
+  if: github.event_name == 'workflow_run'
+  uses: actions/checkout@v4
+  with:
+    ref: ${{ github.event.workflow_run.head_branch }}
     fetch-depth: 0
 ```
 の記述がどこを参照するか
