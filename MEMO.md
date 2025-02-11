@@ -32,6 +32,11 @@
 
 「Use workflow from」で指定されたブランチ
 
+
+### 手動実行時 > Action1から連鎖して実行されるAction2
+
+`main`
+
 ## 検証2
 
 ```
@@ -52,10 +57,29 @@
 
 ### mainブランチマージ時 > Action1
 
+`main`
+
 ### mainブランチマージ時 > Action2
+
+`main`
 
 ### productionブランチマージ時 > Action1
 
+`production`
+
 ### productionブランチマージ時 > Action2
 
-### 手動実行時
+`production`
+
+### 手動実行時 > Action1
+
+「Use workflow from」で指定されたブランチ
+
+### 手動実行時 > Action2
+
+「Use workflow from」で指定されたブランチ
+
+
+### 手動実行時 > Action1から連鎖して実行されるAction2
+
+「Use workflow from」で指定されたブランチ
