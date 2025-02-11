@@ -1,0 +1,21 @@
+name: Action1
+
+on:
+  push:
+    branches:
+      - production
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: "Checkout GitHub Action"
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: "Display Version"
+        run: cat ver.txt
