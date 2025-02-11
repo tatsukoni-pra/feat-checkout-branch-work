@@ -13,11 +13,15 @@ jobs:
     timeout-minutes: 10
 
     steps:
+      - name: "Display Github Event"
+        run: |
+          echo "Event: ${{ github.event_name }}"
+        shell: bash
+
       - name: "Checkout workflow_dispatch GitHub Action"
         if: github.event_name == 'workflow_dispatch'
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.head_branch }}
           fetch-depth: 0
 
       - name: "Checkout workflow_run GitHub Action"
@@ -26,6 +30,12 @@ jobs:
         with:
           ref: ${{ github.event.workflow_run.head_branch }}
           fetch-depth: 0
+
+      - name: "Display workflow_run head_branch"
+        if: github.event_name == 'workflow_run'
+        run: |
+          echo "Head Branch: ${{ github.event.workflow_run.head_branch }}"
+        shell: bash
 
       - name: "Display Branch"
         run: |
